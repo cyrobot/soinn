@@ -1,4 +1,4 @@
 soinn
 =====
 
-soinn implementation of python version.
+implementations of various soinn.
