@@ -101,7 +101,11 @@ def fast_soinn(data, age_max, lamb, c):
                 pass
 
             if connection[index[0], index[1]] == 1:
-                nodes_class_id[[index[0], index[1]]] = min(nodes_class_id[index[0]], nodes_class_id[index[1]])
+                combine_class = max(nodes_class_id[index[0]], nodes_class_id[index[1]])
+                nodes_class_as_winner_runner = np.where(nodes_class_id == nodes_class_id[index[0]])[0]
+                nodes_class_id[nodes_class_as_winner_runner] = combine_class
+                nodes_class_as_winner_runner = np.where(nodes_class_id == nodes_class_id[index[1]])[0]
+                nodes_class_id[nodes_class_as_winner_runner] = combine_class
 
             age[index[1], index[0]] = 0
             age[index[0], index[1]] = 0
