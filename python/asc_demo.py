@@ -10,8 +10,8 @@ mean1 = [0.5, 0.5]
 mean2 = [3.0, 0.5]
 conv1 = [[1, 0], [0, 1]]
 conv2 = [[1.5, 0], [0, 1.2]]
-class1_data = np.random.multivariate_normal(mean1, conv1, 5000)
-class2_data = np.random.multivariate_normal(mean2, conv2, 5000)
+class1_data = np.random.multivariate_normal(mean1, conv1, 15000)
+class2_data = np.random.multivariate_normal(mean2, conv2, 15000)
 train_data = np.concatenate((class1_data, class2_data))
 
 plt.switch_backend('Qt4Agg')
