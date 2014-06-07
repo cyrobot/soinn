@@ -8,7 +8,7 @@ def distance(x, y):
     return np.linalg.norm((y - x))
 
 
-def fast_soinn(data, age_max, lamb, c):
+def fast_soinn(data, age_max, lamb, c1, c2):
     """ A fast soinn function """
 
     # Initialize 2 nodes
@@ -166,12 +166,15 @@ def fast_soinn(data, age_max, lamb, c):
             neighbors = np.sum(connection, axis=1)
             # neighbor0_set = np.intersect1d(np.where(m < mean_m)[0], np.where(neighbors == 0)[0])
             neighbor0_set = np.where(neighbors == 0)[0]
-            neighbor1_set = np.intersect1d(np.where(nodes_density < c * mean_density)[0], np.where(neighbors == 1)[0])
-            neighbor2_set = np.intersect1d(np.where(nodes_density < 0.001 * mean_density)[0],
+            # neighbor1_set = np.intersect1d(np.where(nodes_density < c1 * mean_density)[0], np.where(neighbors == 1)[0])
+            neighbor1_set = np.where(neighbors == 1)[0]
+            neighbor2_set = np.intersect1d(np.where(nodes_density < c2 * mean_density)[0],
                                            np.where(neighbors == 2)[0])
             # neighbor1_set = np.where(neighbors == 1)[0]
             to_delete = np.union1d(neighbor0_set, neighbor1_set)
             to_delete = np.union1d(to_delete, neighbor2_set)
+            if nodes.shape[0] - to_delete.shape[0] < 2:
+                continue
             nodes = np.delete(nodes, to_delete, axis=0)
             threshold = np.delete(threshold, to_delete)
             m = np.delete(m, to_delete)

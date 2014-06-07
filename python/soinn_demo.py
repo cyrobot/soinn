@@ -20,7 +20,7 @@ plt.figure(1)
 plt.plot(train[:, 0], train[:, 1], 'bo')
 
 start_time = time.time()
-nodes, connection, classes = fast_soinn.fast_soinn(train, 50, 100, 1.5)
+nodes, connection, classes = fast_soinn.fast_soinn(train, 50, 100, 1.5, 0.001)
 end_time = time.time()
 print 'classes is %s' % classes
 print 'soinn execute %s seconds' % (end_time - start_time)
