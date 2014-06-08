@@ -19,7 +19,7 @@ plt.figure(1)
 plt.plot(train_data[:, 0], train_data[:, 1], 'x')
 
 start_time = time.time()
-nodes, connection= asc.asc(train_data, 30, 100)
+nodes, connection= asc.asoinn(train_data, 30, 100)
 end_time = time.time()
 print 'soinn execute %s seconds' % (end_time - start_time)
 
